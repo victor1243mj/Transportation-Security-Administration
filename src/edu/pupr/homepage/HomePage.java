@@ -14,7 +14,7 @@ public class HomePage {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				try {//hola
 					HomePage window = new HomePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
