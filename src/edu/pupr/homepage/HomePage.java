@@ -23,7 +23,7 @@ public class HomePage {
 			}
 		});
 	}
-//holaa prueba 244323
+//hola
 	/**
 	 * Create the application.
 	 */
