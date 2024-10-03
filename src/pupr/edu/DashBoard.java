@@ -22,10 +22,21 @@ public class DashBoard {
 
 	private JFrame frame;
 	private JLabel labelPrincipal;
+	private JButton btnNewButton;
+	private JPanel panel;
 
 
 	public static void main(String[] args) {
-	FlatMaterialLighterIJTheme.setup();
+		FlatMaterialLighterIJTheme.setup();
+
+        // Opcional: Verifica si el Look and Feel se aplicó correctamente
+        try {
+            UIManager.setLookAndFeel(new FlatMaterialLighterIJTheme());
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
+        }
+        
+        System.out.print("kkk");
 		 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,12 +53,20 @@ public class DashBoard {
 	/**
 	 * Create the application.
 	 */
-	public DashBoard() {
+	public DashBoard() {	
+		InitStyle() ;
 		initialize();
+	
 		
 	}
 public void InitStyle() {
-	labelPrincipal.putClientProperty( "FlatLaf.style", "font: bold $h1.regular.font" );
+    UIManager.put( "Button.arc", 999 );
+    UIManager.put( "Component.arc", 999 );
+    UIManager.put( "ProgressBar.arc", 999 );
+    UIManager.put( "TextComponent.arc", 999 );
+
+  
+	
 }
 	
 	/**
@@ -58,22 +77,37 @@ public void InitStyle() {
 		frame.setBounds(100, 100, 1020, 721);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(0, 0, 287, 715);
 		panel.setBackground(new Color(0, 0, 205));
 		
 		labelPrincipal = new JLabel("Transportation Security ");
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
-		JButton btnNewButton = new JButton("Home");
+		btnNewButton = new JButton("Home");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnNewButton.setBorder(null);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBorder(null);
-		btnNewButton_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		btnNewButton_1.setBorderPainted(false);
+		JButton btnAddPassport = new JButton("ADD Passport");
+		btnAddPassport.setBorderPainted(false);
+		btnAddPassport.setBorder(null);
+		
+		JButton btnModifyAPassport = new JButton("Modify a passport");
+		btnModifyAPassport.setBorderPainted(false);
+		btnModifyAPassport.setBorder(null);
+		
+		JButton btnReport = new JButton("Report");
+		btnReport.setBorderPainted(false);
+		btnReport.setBorder(null);
+		
+		JButton btnExit = new JButton("Exit");
+		btnExit.setBorderPainted(false);
+		btnExit.setBorder(null);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -81,8 +115,18 @@ public void InitStyle() {
 					.addGap(24)
 					.addComponent(labelPrincipal)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-				.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+				.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnModifyAPassport, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnAddPassport, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+					.addContainerGap())
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -92,8 +136,14 @@ public void InitStyle() {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 50, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(469, Short.MAX_VALUE))
+					.addComponent(btnAddPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnModifyAPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(246, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		
