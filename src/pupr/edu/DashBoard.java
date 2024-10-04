@@ -49,7 +49,7 @@ public class DashBoard {
             System.err.println("Failed to initialize LaF");
         }
         
-        System.out.print("kkk");
+      
 		 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
