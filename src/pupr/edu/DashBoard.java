@@ -6,6 +6,7 @@ import java.awt.Font;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import javax.swing.UIManager;
+import javax.swing.SwingConstants;
 
 public class DashBoard {
 
@@ -28,9 +30,12 @@ public class DashBoard {
 	private JButton btnModifyAPassport;
 	private JButton btnReport;
 	private JButton btnExit;
+	private JPanel panelContent;
 
 
 	public static void main(String[] args) {
+	
+
 		FlatMaterialLighterIJTheme.setup();
 
         // Opcional: Verifica si el Look and Feel se aplicó correctamente
@@ -77,6 +82,7 @@ public void InitStyle() {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1020, 721);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,6 +95,11 @@ public void InitStyle() {
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
 		btnHome = new JButton("Home");
+		btnHome.setVerticalTextPosition(SwingConstants.BOTTOM);
+		btnHome.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnHome.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\home (4).png"));
+		
+	    
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -98,18 +109,26 @@ public void InitStyle() {
 		btnHome.setBorder(null);
 		
 		btnAddPassport = new JButton("ADD Passport");
+		btnAddPassport.setIconTextGap(10);
+		btnAddPassport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\user-add.png"));
 		btnAddPassport.setBorderPainted(false);
 		btnAddPassport.setBorder(null);
 		
 		btnModifyAPassport = new JButton("Modify a passport");
+		btnModifyAPassport.setIconTextGap(10);
+		btnModifyAPassport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\edit.png"));
 		btnModifyAPassport.setBorderPainted(false);
 		btnModifyAPassport.setBorder(null);
 		
 		btnReport = new JButton("Report");
+		btnReport.setIconTextGap(10);
+		btnReport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\document.png"));
 		btnReport.setBorderPainted(false);
 		btnReport.setBorder(null);
 		
 		btnExit = new JButton("Exit");
+		btnExit.setIconTextGap(10);
+		btnExit.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\cross.png"));
 		btnExit.setBorderPainted(false);
 		btnExit.setBorder(null);
 		GroupLayout gl_panel = new GroupLayout(panel);
@@ -119,17 +138,17 @@ public void InitStyle() {
 					.addGap(24)
 					.addComponent(labelPrincipal)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addComponent(btnHome, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(btnModifyAPassport, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnAddPassport, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-					.addContainerGap())
 				.addGroup(gl_panel.createSequentialGroup()
 					.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 				.addGroup(gl_panel.createSequentialGroup()
 					.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(btnHome, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnModifyAPassport, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(btnAddPassport, GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
@@ -151,22 +170,22 @@ public void InitStyle() {
 		);
 		panel.setLayout(gl_panel);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(259, 0, 775, 715);
-		panel_1.setBackground(new Color(128, 64, 64));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
+		panelContent = new JPanel();
+		panelContent.setBounds(259, 0, 775, 715);
+		panelContent.setBackground(new Color(128, 64, 64));
+		GroupLayout gl_panelContent = new GroupLayout(panelContent);
+		gl_panelContent.setHorizontalGroup(
+			gl_panelContent.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 737, Short.MAX_VALUE)
 		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
+		gl_panelContent.setVerticalGroup(
+			gl_panelContent.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 686, Short.MAX_VALUE)
 		);
-		panel_1.setLayout(gl_panel_1);
+		panelContent.setLayout(gl_panelContent);
 		frame.getContentPane().setLayout(null);
 		frame.getContentPane().add(panel);
-		frame.getContentPane().add(panel_1);
+		frame.getContentPane().add(panelContent);
 		frame.setLocationRelativeTo(null);
 	}
 }
