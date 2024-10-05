@@ -1,5 +1,6 @@
 package pupr.edu;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -81,7 +82,14 @@ public void InitStyle() {
   
 	
 }
-	
+	public void  ShowPanel (JPanel panel) {
+		panel.setSize(panelContent.getWidth(),panelContent.getHeight());
+		panel.setLocation(0, 0);
+		panelContent.add(panel,BorderLayout.CENTER);
+		panelContent.revalidate();
+		panelContent.repaint();
+		
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -93,19 +101,21 @@ public void InitStyle() {
 		
 		panel = new JPanel();
 		panel.setBounds(0, 0, 287, 715);
-		panel.setBackground(new Color(51, 51, 204));
+		panel.setBackground(new Color(102, 102, 204));
 		
 		labelPrincipal = new JLabel("Transportation Security ");
-		labelPrincipal.setBounds(24, 29, 253, 85);
+		labelPrincipal.setForeground(new Color(255, 255, 255));
+		labelPrincipal.setBounds(24, 29, 263, 85);
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
 		btnHome = new JButton("Home");
+		btnHome.setForeground(new Color(255, 255, 255));
 		btnHome.setBounds(0, 209, 287, 60);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setIconTextGap(20);
-		btnHome.setBackground(new Color(51, 51, 255));
+		btnHome.setBackground(new Color(102, 102, 255));
 		btnHome.setVerticalTextPosition(SwingConstants.BOTTOM);
-		btnHome.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnHome.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnHome.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\home (4).png"));
 		
 	    
@@ -118,38 +128,46 @@ public void InitStyle() {
 		btnHome.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnAddPassport = new JButton("ADD Passport");
+		btnAddPassport.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnAddPassport.setForeground(new Color(255, 255, 255));
 		btnAddPassport.setBounds(0, 268, 287, 60);
 		btnAddPassport.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAddPassport.setBackground(new Color(51, 51, 255));
+		btnAddPassport.setBackground(new Color(102, 102, 255));
 		btnAddPassport.setIconTextGap(20);
 		btnAddPassport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\user-add.png"));
 		btnAddPassport.setBorderPainted(false);
 		btnAddPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnModifyAPassport = new JButton("Modify a passport");
+		btnModifyAPassport.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnModifyAPassport.setForeground(new Color(255, 255, 255));
 		btnModifyAPassport.setBounds(0, 328, 287, 60);
 		btnModifyAPassport.setHorizontalAlignment(SwingConstants.LEFT);
 		btnModifyAPassport.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		btnModifyAPassport.setAlignmentY(Component.TOP_ALIGNMENT);
-		btnModifyAPassport.setBackground(new Color(51, 51, 255));
+		btnModifyAPassport.setBackground(new Color(102, 102, 255));
 		btnModifyAPassport.setIconTextGap(20);
 		btnModifyAPassport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\edit.png"));
 		btnModifyAPassport.setBorderPainted(false);
 		btnModifyAPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnReport = new JButton("Report");
+		btnReport.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnReport.setForeground(new Color(255, 255, 255));
 		btnReport.setBounds(0, 387, 287, 60);
 		btnReport.setHorizontalAlignment(SwingConstants.LEFT);
-		btnReport.setBackground(new Color(51, 51, 255));
+		btnReport.setBackground(new Color(102, 102, 255));
 		btnReport.setIconTextGap(20);
 		btnReport.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\document.png"));
 		btnReport.setBorderPainted(false);
 		btnReport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnExit = new JButton("Exit");
+		btnExit.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnExit.setForeground(new Color(255, 255, 255));
 		btnExit.setBounds(0, 444, 287, 60);
 		btnExit.setHorizontalAlignment(SwingConstants.LEFT);
-		btnExit.setBackground(new Color(51, 51, 255));
+		btnExit.setBackground(new Color(102, 102, 255));
 		btnExit.setIconTextGap(20);
 		btnExit.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\cross.png"));
 		btnExit.setBorderPainted(false);
