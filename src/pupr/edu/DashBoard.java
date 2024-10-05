@@ -40,7 +40,6 @@ public class DashBoard {
 	private JButton btnExit;
 	private JPanel panelContent;
 	private JMenuItem mntmNewMenuItem;
-	private JMenuItem menuItem;
 	private JMenuItem mntmNewMenuItem_1;
 	private JMenuItem mntmNewMenuItem_2;
 	private JMenuItem mntmNewMenuItem_3;
@@ -106,22 +105,21 @@ public void InitStyle() {
 	private void initialize() {
 		
 		frmTransportationSecurity = new JFrame();
+		frmTransportationSecurity.setResizable(false);
 		frmTransportationSecurity.setTitle("Transportation Security ");
-		frmTransportationSecurity.setBounds(100, 100, 1020, 721);
+		frmTransportationSecurity.setBounds(100, 100, 1020, 725);
 		frmTransportationSecurity.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel = new JPanel();
-		panel.setBounds(0, 0, 287, 715);
+		panel.setBounds(0, 0, 287, 701);
 		panel.setBackground(new Color(102, 102, 204));
 		
 		labelPrincipal = new JLabel("Transportation Security ");
 		labelPrincipal.setForeground(new Color(255, 255, 255));
-		labelPrincipal.setBounds(24, 29, 263, 85);
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
 		btnHome = new JButton("Home");
 		btnHome.setForeground(new Color(255, 255, 255));
-		btnHome.setBounds(0, 209, 287, 60);
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setIconTextGap(20);
 		btnHome.setBackground(new Color(102, 102, 255));
@@ -141,7 +139,6 @@ public void InitStyle() {
 		btnAddPassport = new JButton("ADD Passport");
 		btnAddPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddPassport.setForeground(new Color(255, 255, 255));
-		btnAddPassport.setBounds(0, 268, 287, 60);
 		btnAddPassport.setHorizontalAlignment(SwingConstants.LEFT);
 		btnAddPassport.setBackground(new Color(102, 102, 255));
 		btnAddPassport.setIconTextGap(20);
@@ -152,7 +149,6 @@ public void InitStyle() {
 		btnModifyAPassport = new JButton("Modify a passport");
 		btnModifyAPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnModifyAPassport.setForeground(new Color(255, 255, 255));
-		btnModifyAPassport.setBounds(0, 328, 287, 60);
 		btnModifyAPassport.setHorizontalAlignment(SwingConstants.LEFT);
 		btnModifyAPassport.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		btnModifyAPassport.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -165,7 +161,6 @@ public void InitStyle() {
 		btnReport = new JButton("Report");
 		btnReport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnReport.setForeground(new Color(255, 255, 255));
-		btnReport.setBounds(0, 387, 287, 60);
 		btnReport.setHorizontalAlignment(SwingConstants.LEFT);
 		btnReport.setBackground(new Color(102, 102, 255));
 		btnReport.setIconTextGap(20);
@@ -174,9 +169,13 @@ public void InitStyle() {
 		btnReport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnExit = new JButton("Exit");
+		btnExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 		btnExit.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnExit.setForeground(new Color(255, 255, 255));
-		btnExit.setBounds(0, 444, 287, 60);
 		btnExit.setHorizontalAlignment(SwingConstants.LEFT);
 		btnExit.setBackground(new Color(102, 102, 255));
 		btnExit.setIconTextGap(20);
@@ -185,32 +184,54 @@ public void InitStyle() {
 		btnExit.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		panelContent = new JPanel();
-		panelContent.setBounds(276, 0, 758, 715);
+		panelContent.setBounds(283, 0, 721, 688);
 		panelContent.setBackground(new Color(128, 64, 64));
+		frmTransportationSecurity.getContentPane().setLayout(null);
+		frmTransportationSecurity.getContentPane().add(panel);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(labelPrincipal, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE))
+				.addComponent(btnAddPassport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+				.addComponent(btnHome, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+				.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+				.addComponent(btnModifyAPassport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+				.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(11)
+					.addComponent(labelPrincipal, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+					.addGap(113)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(59)
+							.addComponent(btnAddPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnHome, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(116)
+							.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnModifyAPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(59)
+							.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))))
+		);
+		panel.setLayout(gl_panel);
+		frmTransportationSecurity.getContentPane().add(panelContent);
 		GroupLayout gl_panelContent = new GroupLayout(panelContent);
 		gl_panelContent.setHorizontalGroup(
 			gl_panelContent.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 737, Short.MAX_VALUE)
+				.addGap(0, 758, Short.MAX_VALUE)
 		);
 		gl_panelContent.setVerticalGroup(
 			gl_panelContent.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 686, Short.MAX_VALUE)
+				.addGap(0, 715, Short.MAX_VALUE)
 		);
 		panelContent.setLayout(gl_panelContent);
-		frmTransportationSecurity.getContentPane().setLayout(null);
-		frmTransportationSecurity.getContentPane().add(panel);
-		panel.setLayout(null);
-		panel.add(btnExit);
-		panel.add(labelPrincipal);
-		panel.add(btnAddPassport);
-		panel.add(btnHome);
-		panel.add(btnModifyAPassport);
-		panel.add(btnReport);
-		
-		menuItem = new JMenuItem("New menu item");
-		menuItem.setBounds(0, 29, 137, 26);
-		panel.add(menuItem);
-		frmTransportationSecurity.getContentPane().add(panelContent);
 		frmTransportationSecurity.setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
