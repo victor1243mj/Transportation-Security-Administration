@@ -24,10 +24,13 @@ import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Point;
 import javax.swing.border.MatteBorder;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class DashBoard {
 
-	private JFrame frame;
+	private JFrame frmTransportationSecurity;
 	private JLabel labelPrincipal;
 	private JPanel panel;
 	private JButton btnHome;
@@ -36,6 +39,13 @@ public class DashBoard {
 	private JButton btnReport;
 	private JButton btnExit;
 	private JPanel panelContent;
+	private JMenuItem mntmNewMenuItem;
+	private JMenuItem menuItem;
+	private JMenuItem mntmNewMenuItem_1;
+	private JMenuItem mntmNewMenuItem_2;
+	private JMenuItem mntmNewMenuItem_3;
+	private JMenuItem mntmNewMenuItem_4;
+	private JMenuItem mntmNewMenuItem_5;
 
 
 	public static void main(String[] args) {
@@ -56,7 +66,7 @@ public class DashBoard {
 			public void run() {
 				try {
 					DashBoard window = new DashBoard();
-					window.frame.setVisible(true);
+					window.frmTransportationSecurity.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -95,9 +105,10 @@ public void InitStyle() {
 	 */
 	private void initialize() {
 		
-		frame = new JFrame();
-		frame.setBounds(100, 100, 1020, 721);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTransportationSecurity = new JFrame();
+		frmTransportationSecurity.setTitle("Transportation Security ");
+		frmTransportationSecurity.setBounds(100, 100, 1020, 721);
+		frmTransportationSecurity.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel = new JPanel();
 		panel.setBounds(0, 0, 287, 715);
@@ -186,8 +197,8 @@ public void InitStyle() {
 				.addGap(0, 686, Short.MAX_VALUE)
 		);
 		panelContent.setLayout(gl_panelContent);
-		frame.getContentPane().setLayout(null);
-		frame.getContentPane().add(panel);
+		frmTransportationSecurity.getContentPane().setLayout(null);
+		frmTransportationSecurity.getContentPane().add(panel);
 		panel.setLayout(null);
 		panel.add(btnExit);
 		panel.add(labelPrincipal);
@@ -195,7 +206,38 @@ public void InitStyle() {
 		panel.add(btnHome);
 		panel.add(btnModifyAPassport);
 		panel.add(btnReport);
-		frame.getContentPane().add(panelContent);
-		frame.setLocationRelativeTo(null);
+		
+		menuItem = new JMenuItem("New menu item");
+		menuItem.setBounds(0, 29, 137, 26);
+		panel.add(menuItem);
+		frmTransportationSecurity.getContentPane().add(panelContent);
+		frmTransportationSecurity.setLocationRelativeTo(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		frmTransportationSecurity.setJMenuBar(menuBar);
+		
+		JMenu mnNewMenu = new JMenu("File");
+		menuBar.add(mnNewMenu);
+		
+		mntmNewMenuItem = new JMenuItem("ADD Passport");
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		mntmNewMenuItem_3 = new JMenuItem("Modify a passport");
+		mnNewMenu.add(mntmNewMenuItem_3);
+		
+		mntmNewMenuItem_4 = new JMenuItem("Report");
+		mnNewMenu.add(mntmNewMenuItem_4);
+		
+		mntmNewMenuItem_5 = new JMenuItem("Exit");
+		mnNewMenu.add(mntmNewMenuItem_5);
+		
+		JMenu mnNewMenu_1 = new JMenu("Help");
+		menuBar.add(mnNewMenu_1);
+		
+		mntmNewMenuItem_1 = new JMenuItem("Help contents");
+		mnNewMenu_1.add(mntmNewMenuItem_1);
+		
+		mntmNewMenuItem_2 = new JMenuItem("About");
+		mnNewMenu_1.add(mntmNewMenuItem_2);
 	}
 }
