@@ -27,6 +27,8 @@ import javax.swing.border.MatteBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DashBoard {
 
@@ -83,10 +85,7 @@ public class DashBoard {
 		
 	}
 public void InitStyle() {
-    UIManager.put( "Button.arc", 999 );
-    UIManager.put( "Component.arc", 999 );
-    UIManager.put( "ProgressBar.arc", 999 );
-    UIManager.put( "TextComponent.arc", 999 );
+ 
 
   
 	
@@ -115,10 +114,12 @@ public void InitStyle() {
 		panel.setBackground(new Color(102, 102, 204));
 		
 		labelPrincipal = new JLabel("Transportation Security ");
+		labelPrincipal.setBounds(10, 11, 263, 85);
 		labelPrincipal.setForeground(new Color(255, 255, 255));
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
 		btnHome = new JButton("Home");
+		btnHome.setBounds(0, 209, 287, 60);
 		btnHome.setForeground(new Color(255, 255, 255));
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setIconTextGap(20);
@@ -137,6 +138,7 @@ public void InitStyle() {
 		btnHome.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnAddPassport = new JButton("ADD Passport");
+		btnAddPassport.setBounds(0, 268, 287, 60);
 		btnAddPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddPassport.setForeground(new Color(255, 255, 255));
 		btnAddPassport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -147,6 +149,7 @@ public void InitStyle() {
 		btnAddPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnModifyAPassport = new JButton("Modify a passport");
+		btnModifyAPassport.setBounds(0, 328, 287, 60);
 		btnModifyAPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnModifyAPassport.setForeground(new Color(255, 255, 255));
 		btnModifyAPassport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -159,6 +162,7 @@ public void InitStyle() {
 		btnModifyAPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnReport = new JButton("Report");
+		btnReport.setBounds(0, 438, 287, 60);
 		btnReport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnReport.setForeground(new Color(255, 255, 255));
 		btnReport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -169,6 +173,7 @@ public void InitStyle() {
 		btnReport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnExit = new JButton("Exit");
+		btnExit.setBounds(0, 491, 287, 60);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -188,39 +193,27 @@ public void InitStyle() {
 		panelContent.setBackground(new Color(128, 64, 64));
 		frmTransportationSecurity.getContentPane().setLayout(null);
 		frmTransportationSecurity.getContentPane().add(panel);
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(10)
-					.addComponent(labelPrincipal, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE))
-				.addComponent(btnAddPassport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-				.addComponent(btnHome, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-				.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-				.addComponent(btnModifyAPassport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-				.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 287, GroupLayout.PREFERRED_SIZE)
-		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(11)
-					.addComponent(labelPrincipal, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-					.addGap(113)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(59)
-							.addComponent(btnAddPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnHome, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(116)
-							.addComponent(btnExit, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnModifyAPassport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(59)
-							.addComponent(btnReport, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))))
-		);
-		panel.setLayout(gl_panel);
+		
+		JButton btnModifyAPassport_1 = new JButton("Search for a passport");
+		btnModifyAPassport_1.setBounds(0, 389, 287, 60);
+		btnModifyAPassport_1.setIconTextGap(20);
+		btnModifyAPassport_1.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\edit.png"));
+		btnModifyAPassport_1.setHorizontalAlignment(SwingConstants.LEFT);
+		btnModifyAPassport_1.setForeground(Color.WHITE);
+		btnModifyAPassport_1.setFont(new Font("Dialog", Font.BOLD, 14));
+		btnModifyAPassport_1.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		btnModifyAPassport_1.setBorderPainted(false);
+		btnModifyAPassport_1.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
+		btnModifyAPassport_1.setBackground(new Color(102, 102, 255));
+		btnModifyAPassport_1.setAlignmentY(0.0f);
+		panel.setLayout(null);
+		panel.add(labelPrincipal);
+		panel.add(btnAddPassport);
+		panel.add(btnHome);
+		panel.add(btnModifyAPassport);
+		panel.add(btnExit);
+		panel.add(btnReport);
+		panel.add(btnModifyAPassport_1);
 		frmTransportationSecurity.getContentPane().add(panelContent);
 		GroupLayout gl_panelContent = new GroupLayout(panelContent);
 		gl_panelContent.setHorizontalGroup(
@@ -250,6 +243,12 @@ public void InitStyle() {
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
 		mntmNewMenuItem_5 = new JMenuItem("Exit");
+		mntmNewMenuItem_5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_5);
 		
 		JMenu mnNewMenu_1 = new JMenu("Help");
