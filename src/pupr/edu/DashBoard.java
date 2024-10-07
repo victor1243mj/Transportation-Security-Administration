@@ -106,11 +106,11 @@ public void InitStyle() {
 		frmTransportationSecurity = new JFrame();
 		frmTransportationSecurity.setResizable(false);
 		frmTransportationSecurity.setTitle("Transportation Security ");
-		frmTransportationSecurity.setBounds(100, 100, 1020, 725);
+		frmTransportationSecurity.setBounds(100, 100, 1280, 860);
 		frmTransportationSecurity.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel = new JPanel();
-		panel.setBounds(0, 0, 287, 701);
+		panel.setBounds(0, 0, 287, 839);
 		panel.setBackground(new Color(102, 102, 204));
 		
 		labelPrincipal = new JLabel("Transportation Security ");
@@ -119,7 +119,7 @@ public void InitStyle() {
 		labelPrincipal.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		
 		btnHome = new JButton("Home");
-		btnHome.setBounds(0, 209, 287, 60);
+		btnHome.setBounds(0, 209, 285, 60);
 		btnHome.setForeground(new Color(255, 255, 255));
 		btnHome.setHorizontalAlignment(SwingConstants.LEFT);
 		btnHome.setIconTextGap(20);
@@ -138,7 +138,7 @@ public void InitStyle() {
 		btnHome.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnAddPassport = new JButton("ADD Passport");
-		btnAddPassport.setBounds(0, 268, 287, 60);
+		btnAddPassport.setBounds(0, 268, 285, 60);
 		btnAddPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddPassport.setForeground(new Color(255, 255, 255));
 		btnAddPassport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -149,7 +149,7 @@ public void InitStyle() {
 		btnAddPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnModifyAPassport = new JButton("Modify a passport");
-		btnModifyAPassport.setBounds(0, 328, 287, 60);
+		btnModifyAPassport.setBounds(0, 328, 285, 60);
 		btnModifyAPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnModifyAPassport.setForeground(new Color(255, 255, 255));
 		btnModifyAPassport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -162,7 +162,14 @@ public void InitStyle() {
 		btnModifyAPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnReport = new JButton("Report");
-		btnReport.setBounds(0, 438, 287, 60);
+		btnReport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ReportPage report= new ReportPage();
+				ShowPanel(report.getPanel());
+			}
+		});
+		btnReport.setBounds(0, 438, 285, 60);
 		btnReport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnReport.setForeground(new Color(255, 255, 255));
 		btnReport.setHorizontalAlignment(SwingConstants.LEFT);
@@ -173,7 +180,7 @@ public void InitStyle() {
 		btnReport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnExit = new JButton("Exit");
-		btnExit.setBounds(0, 491, 287, 60);
+		btnExit.setBounds(0, 491, 285, 60);
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -189,13 +196,13 @@ public void InitStyle() {
 		btnExit.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		panelContent = new JPanel();
-		panelContent.setBounds(283, 0, 721, 688);
+		panelContent.setBounds(285, 0, 979, 839);
 		panelContent.setBackground(new Color(128, 64, 64));
 		frmTransportationSecurity.getContentPane().setLayout(null);
 		frmTransportationSecurity.getContentPane().add(panel);
 		
 		JButton btnModifyAPassport_1 = new JButton("Search for a passport");
-		btnModifyAPassport_1.setBounds(0, 389, 287, 60);
+		btnModifyAPassport_1.setBounds(0, 389, 285, 60);
 		btnModifyAPassport_1.setIconTextGap(20);
 		btnModifyAPassport_1.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\edit.png"));
 		btnModifyAPassport_1.setHorizontalAlignment(SwingConstants.LEFT);
