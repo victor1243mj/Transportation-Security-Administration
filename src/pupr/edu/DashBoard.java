@@ -131,6 +131,7 @@ public void InitStyle() {
 	    
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ShowPanel(panelContent);
 			}
 		});
 		btnHome.setBorderPainted(false);
@@ -138,6 +139,10 @@ public void InitStyle() {
 		btnHome.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnAddPassport = new JButton("ADD Passport");
+		btnAddPassport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAddPassport.setBounds(0, 268, 285, 60);
 		btnAddPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnAddPassport.setForeground(new Color(255, 255, 255));

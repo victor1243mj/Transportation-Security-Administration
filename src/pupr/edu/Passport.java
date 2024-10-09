@@ -19,7 +19,7 @@ public class Passport {
 	}
 
 
-	public Passport(String passportNo, String surName, String name, String nationality, String dateOfBirth, String sex,
+	public Passport(String passportNo, String surName, String name, String nationality,String dob, String dateOfBirth, String sex,
 			String placeOfBirth, String dateOfIssue, String dateOfExpiration) {
 		super();
 		this.passportNo = passportNo;

@@ -6,7 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
-
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class MySQLConnection {
 	private static final   String PASSWORD = "Mejia1243"; 
      
      private Connection connection =null;
-     private ResultSet rs;
+   
 	public MySQLConnection() {
 		try {
 			connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -79,7 +80,33 @@ public class MySQLConnection {
 		return result;
 	}
 	
-	
+	public List<Passport> getAllAuthors() {
+		List<Passport> results = null;
+		
+		try(PreparedStatement selectAllAuthors = connection.prepareStatement("SELECT * FROM tsa.Passport")) {
+			try(ResultSet resultSet = selectAllAuthors.executeQuery()) {
+				results = new ArrayList<Passport>();
+				
+				while(resultSet.next()) {
+					results.add(new Passport(resultSet.getString("passpor_no"),
+						                    resultSet.getString("LastName"),
+					            			resultSet.getString("sur_name"),
+					            			resultSet.getString("nationality"),
+					            			resultSet.getString("dob"),
+					            			resultSet.getString("dob"),
+					            			resultSet.getString("sex"),
+					            			resultSet.getString("place_of_birth"),
+					            			resultSet.getString("date_of_issue"),
+					            			resultSet.getString("date_of_expiration")));
+				}
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+			closeDB();
+		}
+		
+		return results;
+	}
 	
 	
 
