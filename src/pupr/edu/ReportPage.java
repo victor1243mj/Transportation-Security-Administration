@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 import java.awt.Font;
+import java.util.List;
+
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -18,7 +20,7 @@ import javax.swing.JPanel;
 public class ReportPage {
 
 	private JFrame frmReport;
-	private JTable table;
+	private JTable tableSQL;
 	private JPanel panel;
 
 	/**
@@ -42,6 +44,9 @@ public class ReportPage {
 	 */
 	public ReportPage() {
 		initialize();
+		MySQLConnection connection =new MySQLConnection();
+		List <Passport> list= connection.getAllPassports();
+	    tableSQL= this.crearTablaDePasaportes(list);
 	}
 
 	/**
@@ -92,120 +97,47 @@ public class ReportPage {
 					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 385, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(157, Short.MAX_VALUE))
 		);
+		MySQLConnection connection = new MySQLConnection();
+
+		tableSQL = new JTable();    
+		List<Passport> list = connection.getAllPassports();
+		tableSQL = crearTablaDePasaportes(list); // Tabla creada con los datos correctos
+		scrollPane.setViewportView(tableSQL);  // Mostrar la tabla con los datos cargados
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-				{null, null, null, null, null, null, null, null, null, null},
-			},
-			new String[] {
-					"passport_no", "sur_name", "given_name", "nationality", 
-	                "dob", "photo", "sex", "place_of_birth", 
-	                "date_of_issue", "date_of_expiration"}
-		));
-		scrollPane.setViewportView(table);
+
+		
+		scrollPane.setViewportView(tableSQL);
 		getPanel().setLayout(gl_panel);
 		frmReport.getContentPane().setLayout(groupLayout);
 	}
+	 public static JTable crearTablaDePasaportes(List<Passport> listaDePasaportes) {
+	        // Nombres de las columnas
+	        String[] columnas = {"passport_no", "sur_name", "given_name", "nationality", "dob", "photo", "sex", "place_of_birth", "date_of_issue", "date_of_expiration"
+			};
+
+	        // Crear el modelo de la tabla
+	        DefaultTableModel model = new DefaultTableModel(columnas, 0);
+
+	        // Llenar el modelo con los datos de los pasaportes
+	        for (Passport passport : listaDePasaportes) {
+	            Object[] fila = {
+	                passport.getPassportNo(),
+	                passport.getName(),
+	                passport.getSurName(),
+	                passport.getNationality(),
+	                passport.getDoubString(),
+	                passport.getPhoto(),
+	                passport.getSex(),
+	                passport.getPlaceOfBirth(),
+	                passport.getDateOfIssue(),
+	                passport.getDateOfExpiration()
+	            };
+	            model.addRow(fila);  // Añadir la fila al modelo
+	        }
+
+	        // Crear y devolver la JTable con el modelo
+	        return new JTable(model);
+	    }
 
 	public JPanel getPanel() {
 		return panel;

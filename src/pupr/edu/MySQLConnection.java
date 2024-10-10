@@ -80,7 +80,7 @@ public class MySQLConnection {
 		return result;
 	}
 	
-	public List<Passport> getAllAuthors() {
+	public List<Passport> getAllPassports() {
 		List<Passport> results = null;
 		
 		try(PreparedStatement selectAllAuthors = connection.prepareStatement("SELECT * FROM tsa.Passport")) {
@@ -88,12 +88,12 @@ public class MySQLConnection {
 				results = new ArrayList<Passport>();
 				
 				while(resultSet.next()) {
-					results.add(new Passport(resultSet.getString("passpor_no"),
-						                    resultSet.getString("LastName"),
-					            			resultSet.getString("sur_name"),
+					results.add(new Passport(resultSet.getString("passport_no"),
+						                    resultSet.getString("sur_name"),
+					            			resultSet.getString("given_name"),
 					            			resultSet.getString("nationality"),
 					            			resultSet.getString("dob"),
-					            			resultSet.getString("dob"),
+					            			resultSet.getString("photo"),
 					            			resultSet.getString("sex"),
 					            			resultSet.getString("place_of_birth"),
 					            			resultSet.getString("date_of_issue"),

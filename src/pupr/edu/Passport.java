@@ -7,7 +7,8 @@ public class Passport {
 	private String surName;
 	private String name;
 	private String nationality;
-	private String dateOfBirth;
+	private String dobString;
+	private String photo;
 	private String sex;
 	private String placeOfBirth;
 	private String dateOfIssue;
@@ -19,21 +20,24 @@ public class Passport {
 	}
 
 
-	public Passport(String passportNo, String surName, String name, String nationality,String dob, String dateOfBirth, String sex,
+	public Passport(String passportNo, String surName, String name, String nationality,String dob, String phot, String sex,
 			String placeOfBirth, String dateOfIssue, String dateOfExpiration) {
 		super();
 		this.passportNo = passportNo;
 		this.surName = surName;
 		this.name = name;
 		this.nationality = nationality;
-		this.dateOfBirth = dateOfBirth;
+		this.dobString=dob;
+		this.photo = phot;
 		this.sex = sex;
 		this.placeOfBirth = placeOfBirth;
 		this.dateOfIssue = dateOfIssue;
 		this.dateOfExpiration = dateOfExpiration;
 	}
 
-
+public String getDoubString() {
+	return dobString;
+}
 	public String getPassportNo() {
 		return passportNo;
 	}
@@ -74,13 +78,13 @@ public class Passport {
 	}
 
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
+	public String getPhoto() {
+		return photo;
 	}
 
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirth(String phot) {
+		this.photo = phot;
 	}
 
 
