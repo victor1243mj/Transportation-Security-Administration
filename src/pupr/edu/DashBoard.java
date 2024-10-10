@@ -48,8 +48,8 @@ public class DashBoard {
 	private JMenuItem mntmNewMenuItem_3;
 	private JMenuItem mntmNewMenuItem_4;
 	private JMenuItem mntmNewMenuItem_5;
-
-
+	Homepage homepage=new Homepage();
+	ReportPage report= new ReportPage();
 	public static void main(String[] args) {
 	
 
@@ -82,6 +82,8 @@ public class DashBoard {
 	public DashBoard() {	
 		InitStyle() ;
 		initialize();
+		
+		ShowPanel(homepage.getPanel());
 	
 	
 		
@@ -93,6 +95,7 @@ public void InitStyle() {
 	
 }
 	public void  ShowPanel (JPanel panel) {
+		 panelContent.removeAll(); 
 		panel.setSize(panelContent.getWidth(),panelContent.getHeight());
 		panel.setLocation(0, 0);
 		panelContent.add(panel,BorderLayout.CENTER);
@@ -133,7 +136,10 @@ public void InitStyle() {
 	    
 		btnHome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ShowPanel(panelContent);
+				
+				
+				ShowPanel(homepage.getPanel());
+				
 			}
 		});
 		btnHome.setBorderPainted(false);
@@ -172,7 +178,7 @@ public void InitStyle() {
 		btnReport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				ReportPage report= new ReportPage();
+				
 				ShowPanel(report.getPanel());
 			}
 		});
@@ -211,7 +217,7 @@ public void InitStyle() {
 		JButton btnModifyAPassport_1 = new JButton("Search for a passport");
 		btnModifyAPassport_1.setBounds(0, 389, 285, 60);
 		btnModifyAPassport_1.setIconTextGap(20);
-		btnModifyAPassport_1.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\edit.png"));
+		btnModifyAPassport_1.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\search (1).png"));
 		btnModifyAPassport_1.setHorizontalAlignment(SwingConstants.LEFT);
 		btnModifyAPassport_1.setForeground(Color.WHITE);
 		btnModifyAPassport_1.setFont(new Font("Dialog", Font.BOLD, 14));
@@ -254,6 +260,11 @@ public void InitStyle() {
 		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		mntmNewMenuItem_4 = new JMenuItem("Report");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ShowPanel(report.getPanel());
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
 		mntmNewMenuItem_5 = new JMenuItem("Exit");

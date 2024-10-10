@@ -16,24 +16,35 @@ public class Passport {
 	
 
 	public Passport() {
-		super();
+	
 	}
 
 
 	public Passport(String passportNo, String surName, String name, String nationality,String dob, String phot, String sex,
 			String placeOfBirth, String dateOfIssue, String dateOfExpiration) {
-		super();
-		this.passportNo = passportNo;
-		this.surName = surName;
-		this.name = name;
-		this.nationality = nationality;
-		this.dobString=dob;
-		this.photo = phot;
-		this.sex = sex;
-		this.placeOfBirth = placeOfBirth;
-		this.dateOfIssue = dateOfIssue;
-		this.dateOfExpiration = dateOfExpiration;
+		setPassportNo(passportNo);
+	    setSurName(surName);
+	    setName(name);
+	    setNationality(nationality);
+	    setDobString(dob);
+	    setPhoto(phot);
+	    setSex(sex);
+	    setPlaceOfBirth(placeOfBirth);
+	    setDateOfIssue(dateOfIssue);
+	    setDateOfExpiration(dateOfExpiration);
 	}
+
+private void setPhoto(String phot) {
+		// TODO Auto-generated method stub
+		photo=phot;
+	}
+
+
+private void setDobString(String dob) {
+	dobString=dob;
+		
+	}
+
 
 public String getDoubString() {
 	return dobString;
