@@ -72,6 +72,7 @@ public class ReportPage {
 		);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setWheelScrollingEnabled(false);
 		
 		JLabel lblNewLabel = new JLabel("Passport Report ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
@@ -102,6 +103,7 @@ public class ReportPage {
 		tableSQL = new JTable();    
 		List<Passport> list = connection.getAllPassports();
 		tableSQL = crearTablaDePasaportes(list); // Tabla creada con los datos correctos
+		tableSQL.removeEditor();
 		scrollPane.setViewportView(tableSQL);  // Mostrar la tabla con los datos cargados
 		
 
@@ -117,7 +119,7 @@ public class ReportPage {
 
 	        // Crear el modelo de la tabla
 	        DefaultTableModel model = new DefaultTableModel(columnas, 0);
-
+	     
 	        // Llenar el modelo con los datos de los pasaportes
 	        for (Passport passport : listaDePasaportes) {
 	            Object[] fila = {
@@ -134,7 +136,7 @@ public class ReportPage {
 	            };
 	            model.addRow(fila);  // Añadir la fila al modelo
 	        }
-
+	       
 	        // Crear y devolver la JTable con el modelo
 	        return new JTable(model);
 	    }

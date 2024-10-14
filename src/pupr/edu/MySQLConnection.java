@@ -108,7 +108,34 @@ public class MySQLConnection {
 		return results;
 	}
 	
-	
+	public Passport getAPassportsByno_pass(String passNo) {
+		Passport results = null;
+		
+		try(PreparedStatement selectPassbyNo = connection.prepareStatement("SELECT * FROM tsa.Passport WHERE passport_no = ? ")) {
+			selectPassbyNo.setString(1, passNo);
+			try(ResultSet resultSet = selectPassbyNo.executeQuery()) {
+				
+				
+				while(resultSet.next()) {
+					results= new Passport(resultSet.getString("passport_no"),
+						                    resultSet.getString("sur_name"),
+					            			resultSet.getString("given_name"),
+					            			resultSet.getString("nationality"),
+					            			resultSet.getString("dob"),
+					            			resultSet.getString("photo"),
+					            			resultSet.getString("sex"),
+					            			resultSet.getString("place_of_birth"),
+					            			resultSet.getString("date_of_issue"),
+					            			resultSet.getString("date_of_expiration"));
+				}
+			}
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+			closeDB();
+		}
+		
+		return results;
+	}
 
 	public void closeDB() {
 		try {

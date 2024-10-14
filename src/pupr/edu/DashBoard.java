@@ -268,11 +268,10 @@ public void InitStyle() {
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
 		mntmNewMenuItem_5 = new JMenuItem("Exit");
-		mntmNewMenuItem_5.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.exit(0);
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {System.exit(0);
 			}
+		
 		});
 		mnNewMenu.add(mntmNewMenuItem_5);
 		
