@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
@@ -22,14 +21,11 @@ import javax.swing.UIManager;
 import javax.swing.SwingConstants;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
-import java.awt.Point;
 import javax.swing.border.MatteBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
+
 
 public class DashBoard {
 
@@ -215,6 +211,14 @@ public void InitStyle() {
 		frmTransportationSecurity.getContentPane().add(panel);
 		
 		JButton btnModifyAPassport_1 = new JButton("Search for a passport");
+		btnModifyAPassport_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FindPassport find=new FindPassport();
+				ShowPanel((JPanel) find.getFrame().getContentPane());
+				
+				
+			}
+		});
 		btnModifyAPassport_1.setBounds(0, 389, 285, 60);
 		btnModifyAPassport_1.setIconTextGap(20);
 		btnModifyAPassport_1.setIcon(new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\search (1).png"));

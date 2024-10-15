@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -118,8 +118,8 @@ public class MySQLConnection {
 				
 				while(resultSet.next()) {
 					results= new Passport(resultSet.getString("passport_no"),
-						                    resultSet.getString("sur_name"),
-					            			resultSet.getString("given_name"),
+						                    resultSet.getString("given_name"),
+					            			resultSet.getString("sur_name"),
 					            			resultSet.getString("nationality"),
 					            			resultSet.getString("dob"),
 					            			resultSet.getString("photo"),
