@@ -92,7 +92,7 @@ public void InitStyle() {
 }
 	public void  ShowPanel (JPanel panel) {
 		 panelContent.removeAll(); 
-		panel.setSize(panelContent.getWidth(),panelContent.getHeight());
+		panel.setSize(panelContent.getWidth()-1,panelContent.getHeight()-20);
 		panel.setLocation(0, 0);
 		panelContent.add(panel,BorderLayout.CENTER);
 		panelContent.revalidate();
@@ -206,7 +206,7 @@ public void InitStyle() {
 		
 		panelContent = new JPanel();
 		panelContent.setBounds(285, 0, 979, 839);
-		panelContent.setBackground(new Color(128, 64, 64));
+		panelContent.setBackground(new Color(0, 0, 0));
 		frmTransportationSecurity.getContentPane().setLayout(null);
 		frmTransportationSecurity.getContentPane().add(panel);
 		

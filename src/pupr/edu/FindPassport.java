@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -14,11 +16,13 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.util.List;
 
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import java.awt.Rectangle;
 
 public class FindPassport {
 
@@ -32,8 +36,8 @@ public class FindPassport {
 	private JLabel sexLabel;
 	private JLabel nationalityLabel;
 	private JLabel dateofExpirationLabel;
-	private JLabel surNameLabel1;
-	private JLabel passportNoLabel1;
+	private JLabel imgLabel;
+	private JPanel imgJpane;
 
 	/**
 	 * Launch the application.
@@ -72,23 +76,20 @@ public class FindPassport {
 		
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(new Rectangle(0, 0, 0, 837));
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3, true));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 4, true));
 		GroupLayout groupLayout = new GroupLayout(getFrame().getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
-					.addGap(20))
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 971, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 783, GroupLayout.PREFERRED_SIZE))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
 		);
 		
-		JPanel imgJpane = new JPanel();
+		imgJpane = new JPanel();
 		imgJpane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		
 		JLabel lblNewLabel = new JLabel("Passport");
@@ -160,24 +161,6 @@ public class FindPassport {
 		dateofExpirationLabel.setBackground(new Color(255, 255, 204));
 		dateofExpirationLabel.setOpaque(true);
 		dateofExpirationLabel.setFont(new Font("Times New Roman", Font.ITALIC, 28));
-		
-		JLabel lblNewLabel_2 = new JLabel("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\r\n\r\n");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		
-		JLabel lblNewLabel_2_1 = new JLabel("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\r\n\r\n");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		
-		surNameLabel1 = new JLabel("New label");
-		surNameLabel1.setHorizontalAlignment(SwingConstants.RIGHT);
-		surNameLabel1.setOpaque(true);
-		surNameLabel1.setFont(new Font("Times New Roman", Font.ITALIC, 24));
-		surNameLabel1.setBackground(new Color(255, 255, 255));
-		
-		passportNoLabel1 = new JLabel("New label");
-		passportNoLabel1.setHorizontalAlignment(SwingConstants.RIGHT);
-		passportNoLabel1.setOpaque(true);
-		passportNoLabel1.setFont(new Font("Times New Roman", Font.ITALIC, 24));
-		passportNoLabel1.setBackground(new Color(255, 255, 255));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -188,8 +171,8 @@ public class FindPassport {
 							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(30)
-							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 239, GroupLayout.PREFERRED_SIZE)))
-					.addGap(34)
+							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)))
+					.addGap(18)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 201, GroupLayout.PREFERRED_SIZE)
@@ -216,18 +199,6 @@ public class FindPassport {
 								.addComponent(lblNewLabel_1_2_4_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(nationalityLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 					.addContainerGap(37, Short.MAX_VALUE))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(passportNoLabel1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblNewLabel_2_1))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(surNameLabel1, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 806, GroupLayout.PREFERRED_SIZE)))
-					.addGap(6))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -280,17 +251,25 @@ public class FindPassport {
 									.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(83)
-							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 236, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(surNameLabel1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_2_1, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(passportNoLabel1))
-					.addGap(47))
+							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(177, Short.MAX_VALUE))
 		);
+		
+		imgLabel = new JLabel("");
+		GroupLayout gl_imgJpane = new GroupLayout(imgJpane);
+		gl_imgJpane.setHorizontalGroup(
+			gl_imgJpane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_imgJpane.createSequentialGroup()
+					.addComponent(imgLabel, GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+					.addGap(20))
+		);
+		gl_imgJpane.setVerticalGroup(
+			gl_imgJpane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_imgJpane.createSequentialGroup()
+					.addComponent(imgLabel, GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+					.addGap(22))
+		);
+		imgJpane.setLayout(gl_imgJpane);
 		panel.setLayout(gl_panel);
 		getFrame().getContentPane().setLayout(groupLayout);
 	}
@@ -308,15 +287,37 @@ public class FindPassport {
 		    
 		        
 		        surNameLabel.setText(list.getSurName().toUpperCase() != null ? list.getSurName() : "N/A");
-		        surNameLabel1.setText("<<<<"+list.getSurName() != null ? list.getSurName() : "N/A");
+		        
 		        nameLabel.setText(list.getName() != null ? list.getName() : "N/A");
 		        dateBithdayLabel.setText(list.getDoubString() != null ? list.getDoubString() : "N/A");
 		        dateIssueLabel.setText(list.getDateOfIssue() != null ? list.getDateOfIssue() : "N/A");
 		        passportNoLabel.setText(list.getPassportNo() != null ? list.getPassportNo() : "N/A");
-		        passportNoLabel1.setText("<<<<"+list.getPassportNo() != null ? list.getPassportNo() : "N/A");
+		        
 		        sexLabel.setText(list.getSex() != null ? list.getSex() : "N/A");
 		        nationalityLabel.setText(list.getNationality() != null ? list.getNationality() : "N/A");
 		        dateofExpirationLabel.setText(list.getDateOfExpiration() != null ? list.getDateOfExpiration() : "N/A");
+		        if (list.getSex().equals("M")) {  // Usa .equals() para comparar Strings
+		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\New folder\\Transportation-Security-Administration\\img\\men.jpg");
+		            
+		            // Redimensionar la imagen para que sea de 20x20
+		            Image scaledImage = img.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
+		            System.out.println(img.getImageLoadStatus());
+		            imgLabel.setIcon(new ImageIcon(scaledImage));
+		            
+		            // Revalidar y repintar el JLabel
+		            imgLabel.revalidate();
+		            imgLabel.repaint();
+		        } else if (list.getSex().equals("F")) {  
+		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
+		            
+		            // Redimensionar la imagen para que sea de 500x500
+		            Image scaledImage = img.getImage().getScaledInstance(imgJpane.getWidth()-30,imgJpane.getHeight()-2, Image.SCALE_SMOOTH);
+		            imgLabel.setIcon(new ImageIcon(scaledImage));
+		            
+		            // Revalidar y repintar el JLabel
+		            imgLabel.revalidate();
+		            imgLabel.repaint();
+		        }
 		    } else {
 		        // Si el pasaporte no se encontró
 		        JOptionPane.showMessageDialog(null, "Passport not found");
