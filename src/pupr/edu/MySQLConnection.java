@@ -30,25 +30,23 @@ public class MySQLConnection {
 		}	
 		
 	}
-	public int addPassport(String passport_no, String name, String lastName,
-			String nationaly, String date, String photo, String sex, String bornPlace,
-			String date_issue,String dateExp) {
+	public int addPassport(Passport passport) {
 		int result=0;
 		try 
 			(PreparedStatement insertNewPassport = connection.prepareStatement("INSERT INTO TSA.Passport"
 				+ "(passport_no, sur_name, given_name, nationality, dob, photo, "
 				+ " sex, place_of_birth, date_of_issue, date_of_expiration) "
-				+ "VALUES(?,?,?,?,?,?,?,?,?,?) ")){
-			insertNewPassport.setString(1, passport_no);
-			insertNewPassport.setString(2, name);
-			insertNewPassport.setString(3, lastName);
-			insertNewPassport.setString(4, nationaly);
-			 insertNewPassport.setString(5, date);
-			insertNewPassport.setString(6, photo);
-			insertNewPassport.setString(7, sex);
-			insertNewPassport.setString(8, bornPlace);
-			insertNewPassport.setString(9, date_issue);
-			insertNewPassport.setString(10,dateExp);
+				+ "VALUES(?,?,?,?,?,?,?,?,?,?)")){
+			insertNewPassport.setString(1, passport.getPassportNo());
+			insertNewPassport.setString(2, passport.getSurName());
+			insertNewPassport.setString(3, passport.getName());
+			insertNewPassport.setString(4, passport.getNationality());
+			 insertNewPassport.setString(5, passport.getDobString());
+			insertNewPassport.setString(6, passport.getPhoto());
+			insertNewPassport.setString(7, passport.getSex());
+			insertNewPassport.setString(8, passport.getPlaceOfBirth());
+			insertNewPassport.setString(9, passport.getDateOfIssue());
+			insertNewPassport.setString(10,passport.getDateOfExpiration());
 			result = insertNewPassport.executeUpdate();
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, "Insert problems: " + ex.getMessage());
@@ -56,29 +54,40 @@ public class MySQLConnection {
 		
 		return result;
 	}
-	public int modifyPassport(String passport_no, String name, String lastName,
-			String nationaly, LocalDate date, String photo, String sex, String bornPlace,String date_issue,String dateExp) {
-		int result=0;
-		try 
-			(PreparedStatement insertNewPassport = connection.prepareStatement("UPDATE TSA.Passport SET "
-				+ "(passport_no=? sur_name=? given_name=? nationality=? dob=?, photo=? "
-				+ " sex=? place_of_birth=? date_of_issue=? date_of_expiration=?) ")){
-			insertNewPassport.setString(1, passport_no);
-			insertNewPassport.setString(2, name);
-			insertNewPassport.setString(3, lastName);
-			insertNewPassport.setString(4, nationaly);
-			insertNewPassport.setDate(5, java.sql.Date.valueOf(date));
-			insertNewPassport.setString(6, photo);
-			insertNewPassport.setString(7, sex);
-			insertNewPassport.setString(8, bornPlace);
-			insertNewPassport.setString(9, date_issue);
-			insertNewPassport.setString(10,dateExp);
-		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "Insert problems: " + ex.getMessage());
-		}
-		
-		return result;
+	public int modifyPassport(Passport passport) {
+	    int result = 0;
+	    try {
+	        // Aquí actualizamos el pasaporte que tiene el número especificado
+	        String sql = "UPDATE TSA.Passport SET "
+	                   + "sur_name=?, given_name=?, nationality=?, dob=?, photo=?, "
+	                   + "sex=?, place_of_birth=?, date_of_issue=?, date_of_expiration=? "
+	                   + "WHERE passport_no=?";
+	        
+	        // Preparamos la consulta SQL
+	        PreparedStatement updatePassport = connection.prepareStatement(sql);
+	        
+	        // Establecemos los nuevos valores
+	        updatePassport.setString(1, passport.getSurName());
+	        updatePassport.setString(2, passport.getName());
+	        updatePassport.setString(3, passport.getNationality());
+	        updatePassport.setString(4, passport.getDobString());
+	        updatePassport.setString(5, passport.getPhoto());
+	        updatePassport.setString(6, passport.getSex());
+	        updatePassport.setString(7, passport.getPlaceOfBirth());
+	        updatePassport.setString(8, passport.getDateOfIssue());
+	        updatePassport.setString(9, passport.getDateOfExpiration());
+	        updatePassport.setString(10, passport.getPassportNo()); // Este es el número que se usará para identificar el pasaporte a modificar
+	        
+	        // Ejecutamos la consulta
+	        result = updatePassport.executeUpdate();
+	        
+	    } catch (Exception ex) {
+	        JOptionPane.showMessageDialog(null, "Update problems: " + ex.getMessage());
+	    }
+	    
+	    return result;
 	}
+
 	
 	public List<Passport> getAllPassports() {
 		List<Passport> results = null;
@@ -153,9 +162,10 @@ public class MySQLConnection {
 		MySQLConnection connection =new MySQLConnection();
 	
 		 try {
-	            int result = connection.addPassport("P123456789", "Victor", "Mejia", "RD",
+			Passport a= new Passport("P12345", "Victor", "Mejia", "RD",
 	            		"1995-10-06", "ruta/a/foto.jpg", "M", "San Juan",
 	                    "2020-01-01", "2030-01-01");
+	            int result = connection.addPassport(a);
 
 	            if (result > 0) {
 	                System.out.println("Pasaporte agregado exitosamente.");

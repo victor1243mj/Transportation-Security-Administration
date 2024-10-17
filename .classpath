@@ -8,17 +8,17 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vipap/git/New folder/Transportation-Security-Administration/flatlaf-intellij-themes-3.5.1.jar">
+	<classpathentry kind="lib" path="C:/Users/vipap/git/Transportation-Security-Administration/flatlaf-intellij-themes-3.5.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vipap/git/New folder/Transportation-Security-Administration/flatlaf-3.5.1.jar">
+	<classpathentry kind="lib" path="C:/Users/vipap/git/Transportation-Security-Administration/flatlaf-3.5.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/vipap/git/New folder/Transportation-Security-Administration/mysql-connector-j-9.0.0.jar">
+	<classpathentry kind="lib" path="C:/Users/vipap/git/Transportation-Security-Administration/mysql-connector-j-9.0.0.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

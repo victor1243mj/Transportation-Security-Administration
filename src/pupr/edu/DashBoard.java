@@ -45,7 +45,7 @@ public class DashBoard {
 	private JMenuItem mntmNewMenuItem_4;
 	private JMenuItem mntmNewMenuItem_5;
 	Homepage homepage=new Homepage();
-	ReportPage report= new ReportPage();
+
 	public static void main(String[] args) {
 	
 
@@ -92,7 +92,7 @@ public void InitStyle() {
 }
 	public void  ShowPanel (JPanel panel) {
 		 panelContent.removeAll(); 
-		panel.setSize(panelContent.getWidth()-1,panelContent.getHeight()-20);
+		panel.setSize(panelContent.getWidth()-3,panelContent.getHeight()-20);
 		panel.setLocation(0, 0);
 		panelContent.add(panel,BorderLayout.CENTER);
 		panelContent.revalidate();
@@ -145,6 +145,8 @@ public void InitStyle() {
 		btnAddPassport = new JButton("ADD Passport");
 		btnAddPassport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddPassport addpassport =new AddPassport();
+				ShowPanel((JPanel)addpassport.getFrame().getContentPane());
 			}
 		});
 		btnAddPassport.setBounds(0, 268, 285, 60);
@@ -158,6 +160,12 @@ public void InitStyle() {
 		btnAddPassport.setBorder(new MatteBorder(1, 10, 1, 1, (Color) new Color(0, 0, 0)));
 		
 		btnModifyAPassport = new JButton("Modify a passport");
+		btnModifyAPassport.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModifyPage modify=new ModifyPage();
+				ShowPanel((JPanel) modify.getFrame().getContentPane());
+			}
+		});
 		btnModifyAPassport.setBounds(0, 328, 285, 60);
 		btnModifyAPassport.setFont(new Font("Dialog", Font.BOLD, 14));
 		btnModifyAPassport.setForeground(new Color(255, 255, 255));
@@ -173,8 +181,8 @@ public void InitStyle() {
 		btnReport = new JButton("Report");
 		btnReport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
+				ReportPage report= new ReportPage();
+				 
 				ShowPanel(report.getPanel());
 			}
 		});
@@ -266,6 +274,7 @@ public void InitStyle() {
 		mntmNewMenuItem_4 = new JMenuItem("Report");
 		mntmNewMenuItem_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReportPage report= new ReportPage();
 				ShowPanel(report.getPanel());
 			}
 		});

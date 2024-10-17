@@ -127,7 +127,7 @@ public class ReportPage {
 	                passport.getName(),
 	                passport.getSurName(),
 	                passport.getNationality(),
-	                passport.getDoubString(),
+	                passport.getDobString(),
 	                passport.getPhoto(),
 	                passport.getSex(),
 	                passport.getPlaceOfBirth(),

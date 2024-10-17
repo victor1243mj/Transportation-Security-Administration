@@ -86,7 +86,7 @@ public class FindPassport {
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+				.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
 		);
 		
 		imgJpane = new JPanel();
@@ -289,7 +289,7 @@ public class FindPassport {
 		        surNameLabel.setText(list.getSurName().toUpperCase() != null ? list.getSurName() : "N/A");
 		        
 		        nameLabel.setText(list.getName() != null ? list.getName() : "N/A");
-		        dateBithdayLabel.setText(list.getDoubString() != null ? list.getDoubString() : "N/A");
+		        dateBithdayLabel.setText(list.getDobString() != null ? list.getDobString() : "N/A");
 		        dateIssueLabel.setText(list.getDateOfIssue() != null ? list.getDateOfIssue() : "N/A");
 		        passportNoLabel.setText(list.getPassportNo() != null ? list.getPassportNo() : "N/A");
 		        
@@ -297,21 +297,21 @@ public class FindPassport {
 		        nationalityLabel.setText(list.getNationality() != null ? list.getNationality() : "N/A");
 		        dateofExpirationLabel.setText(list.getDateOfExpiration() != null ? list.getDateOfExpiration() : "N/A");
 		        if (list.getSex().equals("M")) {  // Usa .equals() para comparar Strings
-		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\New folder\\Transportation-Security-Administration\\img\\men.jpg");
+		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\men.jpg");
 		            
 		            // Redimensionar la imagen para que sea de 20x20
 		            Image scaledImage = img.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
-		            System.out.println(img.getImageLoadStatus());
+		       
 		            imgLabel.setIcon(new ImageIcon(scaledImage));
 		            
 		            // Revalidar y repintar el JLabel
 		            imgLabel.revalidate();
 		            imgLabel.repaint();
 		        } else if (list.getSex().equals("F")) {  
-		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
+		            ImageIcon img2 = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
 		            
 		            // Redimensionar la imagen para que sea de 500x500
-		            Image scaledImage = img.getImage().getScaledInstance(imgJpane.getWidth()-30,imgJpane.getHeight()-2, Image.SCALE_SMOOTH);
+		            Image scaledImage = img2.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
 		            imgLabel.setIcon(new ImageIcon(scaledImage));
 		            
 		            // Revalidar y repintar el JLabel
