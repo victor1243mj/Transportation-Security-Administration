@@ -187,7 +187,7 @@ public class AddPassport {
 				
 				
 
-		        // Validar fechas
+		        // getting all the  data
 		        try {
 		        	String surName = surNameLabel.getText();
 			        String givenName = nameLabel.getText();
@@ -202,7 +202,7 @@ public class AddPassport {
 			        
 		
 
-			        // Formato de fecha esperado
+			        // formate 
 			        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			        dateFormat.setLenient(false); // Evita que acepte fechas inválidas como "32/01/2020"
 			        
@@ -213,38 +213,38 @@ public class AddPassport {
 
 		            // Aquí puedes agregar validaciones adicionales, como asegurarte de que las fechas tengan sentido
 		            if (issueDate.after(expirationDate)) {
-		                JOptionPane.showMessageDialog(null, "La fecha de emisión no puede ser posterior a la de expiración.");
+		                JOptionPane.showMessageDialog(null, "The issue date cannot be later than the expiration date.");
 		                return;
 		            }
 
 		            if (birthDate.after(issueDate)) {
-		                JOptionPane.showMessageDialog(null, "La fecha de nacimiento no puede ser posterior a la de emisión.");
+		                JOptionPane.showMessageDialog(null, "The date of birth cannot be later than the date of issue.");
 		                return;
 		            }
 
-		            // Si las fechas son válidas, crear el pasaporte
+		            // If the dates are valid, create the passport
 		            Passport passport = new Passport(passportNo, givenName, surName, nationality, dateOfBirth, photo, sex, place, dateOfIssue, dateOfExpiration);
 		            System.out.println(passport);
 
-		            // Intentar agregar el pasaporte a la base de datos
+		            // Try to add the passport to the database
 		            try {
 		                MySQLConnection connection = new MySQLConnection();
 		                int result = connection.addPassport(passport);
 		                
 		                // Verificar el resultado de la operación
 		                if (result > 0) {
-		                    JOptionPane.showMessageDialog(null, "¡Pasaporte agregado exitosamente!");
+		                    JOptionPane.showMessageDialog(null, "Passport added successfully!");
 		                } else {
-		                    JOptionPane.showMessageDialog(null, "No se encontró el pasaporte con el número proporcionado.");
+		                    JOptionPane.showMessageDialog(null, "The passport with the provided number was not found.");
 		                }
 		                
 		            } catch (Exception ex) {
-		                JOptionPane.showMessageDialog(null, "Error al agregar el pasaporte: " + ex.getMessage());
+		                JOptionPane.showMessageDialog(null, "Error adding passport: " + ex.getMessage());
 		            }
 
 		        } catch (ParseException ex) {
 		            // Mostrar un mensaje de error si alguna fecha no tiene el formato adecuado
-		            JOptionPane.showMessageDialog(null, "Por favor, ingrese las fechas en el formato yyyy/MM/dd.");
+		            JOptionPane.showMessageDialog(null, "Please enter dates in yyyy/MM/dd format.");
 		        }catch (IllegalArgumentException x) {
 					// TODO: handle exception
 		        	JOptionPane.showMessageDialog(null, "fill all the campus");
@@ -276,6 +276,7 @@ public class AddPassport {
 		comboBox  = new JComboBox<String>();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//compared String to know what img to show
 				 if (comboBox.getSelectedItem().equals("M")) {  // Usa .equals() para comparar Strings
 			            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\men.jpg");
 			            
@@ -284,13 +285,13 @@ public class AddPassport {
 			       
 			            imgLabel.setIcon(new ImageIcon(scaledImage));
 			            
-			            // Revalidar y repintar el JLabel
+			            // Revalidete and reppaint 
 			            imgLabel.revalidate();
 			            imgLabel.repaint();
 			        } else if (comboBox.getSelectedItem().equals("F")) {  
 			            ImageIcon img2 = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
 			            
-			            // Redimensionar la imagen para que sea de 500x500
+			          
 			            Image scaledImage = img2.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
 			            imgLabel.setIcon(new ImageIcon(scaledImage));
 			            

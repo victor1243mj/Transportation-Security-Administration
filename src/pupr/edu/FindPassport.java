@@ -274,16 +274,17 @@ public class FindPassport {
 		getFrame().getContentPane().setLayout(groupLayout);
 	}
 	
+	//method to show the information
 	public void SetInfo() {
 		try {
 		    String numberPass = JOptionPane.showInputDialog(null, "Enter the passport number: ");
 		    
-		    // Obtener la conexión y el pasaporte
+		    // Get the connection and passport
 		    MySQLConnection connection = new MySQLConnection();
-		    Passport list = connection.getAPassportsByno_pass(numberPass); // Asegúrate que el tipo sea correcto
-		    
+		    Passport list = connection.getAPassportsByno_pass(numberPass); 
+		    //valid the list its not null
 		    if (list != null) {
-		        // Asignar valores a los labels si la búsqueda fue exitosa
+		        // Assign values ​​to labels if the search was successful
 		    
 		        
 		        surNameLabel.setText(list.getSurName().toUpperCase() != null ? list.getSurName() : "N/A");
@@ -299,27 +300,25 @@ public class FindPassport {
 		        if (list.getSex().equals("M")) {  // Usa .equals() para comparar Strings
 		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\men.jpg");
 		            
-		            // Redimensionar la imagen para que sea de 20x20
+		          
 		            Image scaledImage = img.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
 		       
 		            imgLabel.setIcon(new ImageIcon(scaledImage));
-		            
-		            // Revalidar y repintar el JLabel
 		            imgLabel.revalidate();
 		            imgLabel.repaint();
 		        } else if (list.getSex().equals("F")) {  
 		            ImageIcon img2 = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
 		            
-		            // Redimensionar la imagen para que sea de 500x500
+		        
 		            Image scaledImage = img2.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
 		            imgLabel.setIcon(new ImageIcon(scaledImage));
 		            
-		            // Revalidar y repintar el JLabel
+		         
 		            imgLabel.revalidate();
 		            imgLabel.repaint();
 		        }
 		    } else {
-		        // Si el pasaporte no se encontró
+		      
 		        JOptionPane.showMessageDialog(null, "Passport not found");
 		    }
 		    

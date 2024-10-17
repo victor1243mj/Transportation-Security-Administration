@@ -45,6 +45,7 @@ public class DashBoard {
 	private JMenuItem mntmNewMenuItem_4;
 	private JMenuItem mntmNewMenuItem_5;
 	Homepage homepage=new Homepage();
+	private JMenuItem mntmNewMenuItem_6;
 
 	public static void main(String[] args) {
 	
@@ -266,9 +267,21 @@ public void InitStyle() {
 		menuBar.add(mnNewMenu);
 		
 		mntmNewMenuItem = new JMenuItem("ADD Passport");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddPassport addpassport =new AddPassport();
+				ShowPanel((JPanel)addpassport.getFrame().getContentPane());
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		mntmNewMenuItem_3 = new JMenuItem("Modify a passport");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModifyPage modify=new ModifyPage();
+				ShowPanel((JPanel) modify.getFrame().getContentPane());
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_3);
 		
 		mntmNewMenuItem_4 = new JMenuItem("Report");
@@ -278,6 +291,15 @@ public void InitStyle() {
 				ShowPanel(report.getPanel());
 			}
 		});
+		
+		mntmNewMenuItem_6 = new JMenuItem("Search for a Passport");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FindPassport find=new FindPassport();
+				ShowPanel((JPanel) find.getFrame().getContentPane());
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_6);
 		mnNewMenu.add(mntmNewMenuItem_4);
 		
 		mntmNewMenuItem_5 = new JMenuItem("Exit");
@@ -292,9 +314,23 @@ public void InitStyle() {
 		menuBar.add(mnNewMenu_1);
 		
 		mntmNewMenuItem_1 = new JMenuItem("Help contents");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				HelpContent page = new HelpContent();
+		        ShowPanel((JPanel)page.getFrmHelpContent().getContentPane());
+
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_1);
 		
 		mntmNewMenuItem_2 = new JMenuItem("About");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				About pageabout= new About();
+				ShowPanel((JPanel)pageabout.getFrame().getContentPane());
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 	}
 }
