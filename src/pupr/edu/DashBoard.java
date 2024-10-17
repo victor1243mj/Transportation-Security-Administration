@@ -92,7 +92,7 @@ public void InitStyle() {
 }
 	public void  ShowPanel (JPanel panel) {
 		 panelContent.removeAll(); 
-		panel.setSize(panelContent.getWidth()-3,panelContent.getHeight()-20);
+		panel.setSize(panelContent.getWidth(),panelContent.getHeight()-20);
 		panel.setLocation(0, 0);
 		panelContent.add(panel,BorderLayout.CENTER);
 		panelContent.revalidate();

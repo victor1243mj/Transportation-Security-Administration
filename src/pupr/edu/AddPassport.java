@@ -103,16 +103,13 @@ public class AddPassport {
 		GroupLayout groupLayout = new GroupLayout(getFrame().getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 1309, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 1329, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE))
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE))
 		);
 		
 		imgJpane = new JPanel();
@@ -150,30 +147,37 @@ public class AddPassport {
 		lblNewLabel_1_2_4_1.setFont(new Font("Times New Roman", Font.BOLD, 32));
 		
 		surNameLabel = new JTextField();
+		surNameLabel.setBackground(new Color(255, 255, 204));
 		surNameLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		surNameLabel.setColumns(10);
 		
 		nameLabel = new JTextField();
+		nameLabel.setBackground(new Color(255, 255, 204));
 		nameLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		nameLabel.setColumns(10);
 		
 		dateBithdayLabel = new JTextField();
+		dateBithdayLabel.setBackground(new Color(255, 255, 204));
 		dateBithdayLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		dateBithdayLabel.setColumns(10);
 		
 		dateIssueLabel = new JTextField();
+		dateIssueLabel.setBackground(new Color(255, 255, 204));
 		dateIssueLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		dateIssueLabel.setColumns(10);
 		
 		passportNoLabel = new JTextField();
+		passportNoLabel.setBackground(new Color(255, 255, 204));
 		passportNoLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		passportNoLabel.setColumns(10);
 		
 		nationalityLabel = new JTextField();
+		nationalityLabel.setBackground(new Color(255, 255, 204));
 		nationalityLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		nationalityLabel.setColumns(10);
 		
 		dateofExpirationLabel = new JTextField();
+		dateofExpirationLabel.setBackground(new Color(255, 255, 204));
 		dateofExpirationLabel.setFont(new Font("Times New Roman", Font.ITALIC, 32));
 		dateofExpirationLabel.setColumns(10);
 		
@@ -270,76 +274,104 @@ public class AddPassport {
 		lblNewLabel_1_2_4_2.setFont(new Font("Times New Roman", Font.BOLD, 32));
 		
 		comboBox  = new JComboBox<String>();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 if (comboBox.getSelectedItem().equals("M")) {  // Usa .equals() para comparar Strings
+			            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\men.jpg");
+			            
+			            // Redimensionar la imagen para que sea de 20x20
+			            Image scaledImage = img.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
+			       
+			            imgLabel.setIcon(new ImageIcon(scaledImage));
+			            
+			            // Revalidar y repintar el JLabel
+			            imgLabel.revalidate();
+			            imgLabel.repaint();
+			        } else if (comboBox.getSelectedItem().equals("F")) {  
+			            ImageIcon img2 = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\woman.jpg");
+			            
+			            // Redimensionar la imagen para que sea de 500x500
+			            Image scaledImage = img2.getImage().getScaledInstance(275,287, Image.SCALE_SMOOTH);
+			            imgLabel.setIcon(new ImageIcon(scaledImage));
+			            
+			            // Revalidar y repintar el JLabel
+			            imgLabel.revalidate();
+			            imgLabel.repaint();
+			        }
+			}
+		});
+		comboBox.setBackground(new Color(255, 255, 204));
 		comboBox.setFont(new Font("Times New Roman", Font.ITALIC, 32));
-		comboBox.setModel(new DefaultComboBoxModel<>(new String[] {"F", "M"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"-", "F", "M"}));
 		
 		country = new JComboBox<>();
+		country.setBackground(new Color(255, 255, 204));
 		country.setModel(new DefaultComboBoxModel<>(new String[] {"Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Costa Rica", "Cuba", "República Dominicana", "Ecuador", "El Salvador", "Guatemala", "Honduras", "México", "Nicaragua", "Panamá", "Paraguay", "Perú", "Puerto Rico", "Uruguay", "Venezuela"}));
 		country.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(30)
-							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(44)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-									.addGap(10)
-									.addComponent(country, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
-								.addComponent(lblNewLabel_1_2_4_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(18)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-								.addComponent(surNameLabel, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-								.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2_2, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
-								.addComponent(dateBithdayLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2_4, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-								.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblNewLabel)))
-					.addGap(36)
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblNewLabel_1_2_4_1)
-							.addContainerGap())
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap())
-							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(lblNewLabel_1_1, GroupLayout.PREFERRED_SIZE, 339, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap())
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panel.createSequentialGroup()
+									.addContainerGap()
+									.addComponent(separator, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(30)
+									.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(44)
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblNewLabel_1_2_3, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
-										.addComponent(passportNoLabel, GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-										.addComponent(comboBox, 0, 303, Short.MAX_VALUE)
-										.addComponent(nationalityLabel, GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-										.addComponent(dateofExpirationLabel, GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))
-									.addGap(332))
+										.addGroup(gl_panel.createSequentialGroup()
+											.addGap(10)
+											.addComponent(country, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+										.addComponent(lblNewLabel_1_2_4_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addPreferredGap(ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+									.addGap(18)
+									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+										.addComponent(surNameLabel, GroupLayout.PREFERRED_SIZE, 298, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_1_2, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+										.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_1_2_2, GroupLayout.PREFERRED_SIZE, 276, GroupLayout.PREFERRED_SIZE)
+										.addComponent(dateBithdayLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_1_2_4, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+										.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(lblNewLabel)))
+							.addGap(36)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1_2_4_1)
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel_1_2_3, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 100, Short.MAX_VALUE))
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addPreferredGap(ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
 									.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
-									.addGap(55))))))
-				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(103)
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addGap(231)
-					.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(395, Short.MAX_VALUE))
+									.addGap(55))
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_panel.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+												.addComponent(lblNewLabel_1_1, GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+												.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)
+												.addComponent(passportNoLabel, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)))
+										.addGroup(Alignment.LEADING, gl_panel.createParallelGroup(Alignment.TRAILING, false)
+											.addComponent(comboBox, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(nationalityLabel, Alignment.LEADING)
+											.addComponent(dateofExpirationLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
+									.addGap(306))))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(103)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
+							.addGap(231)
+							.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)))
+					.addGap(0))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -353,48 +385,56 @@ public class AddPassport {
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(36)
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(83)
 							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(40)
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel_1)
+									.addGap(19))
+								.addGroup(gl_panel.createSequentialGroup()
 									.addComponent(lblNewLabel_1_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-									.addGap(13))
-								.addComponent(lblNewLabel_1))
+									.addPreferredGap(ComponentPlacement.UNRELATED)))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(passportNoLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(surNameLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(lblNewLabel_1_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(surNameLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+								.addComponent(passportNoLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
 							.addGap(18)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel_1_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 							.addGap(18)
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblNewLabel_1_2_3, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblNewLabel_1_2_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+							.addPreferredGap(ComponentPlacement.UNRELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 								.addComponent(dateBithdayLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 								.addComponent(nationalityLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
-					.addGap(20)
-					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel_1_2_4_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1_2_4, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblNewLabel_1_2_4_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(15)
+							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblNewLabel_1_2_4_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1_2_4, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(18)
+							.addComponent(lblNewLabel_1_2_4_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(country, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-							.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-							.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)))
 					.addGap(95)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)

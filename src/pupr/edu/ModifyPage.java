@@ -17,13 +17,16 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
-public class ModifyPage {
+public class ModifyPage extends DashBoard {
 	private JFrame frmModifyPassport;
 	private Passport list;
 	private JLabel imgLabel;
@@ -37,6 +40,7 @@ public class ModifyPage {
 	private JTextField nationalityLabel;
 	private JTextField dateofExpirationLabel;
 	private JButton btnNewButton;
+	private JTextField place;
 
 	public JFrame getFrmModifyPassport() {
 		return frmModifyPassport;
@@ -178,9 +182,9 @@ public class ModifyPage {
 		        String photo = "photo";
 		        String nationality = nationalityLabel.getText();
 		        String dateOfExpiration = dateofExpirationLabel.getText();
-		        
+		        String placeString= place.getText();
 		        //creating new passport
-		       Passport passport= new Passport(passportNo, givenName,surName,nationality,dateOfBirth,photo,sex,nationality,dateOfIssue,dateOfExpiration);
+		       Passport passport= new Passport(passportNo, givenName,surName,nationality,dateOfBirth,photo,sex,placeString,dateOfIssue,dateOfExpiration);
 		       
 		       try {
 		           MySQLConnection connection = new MySQLConnection();
@@ -210,24 +214,46 @@ public class ModifyPage {
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Homepage home =new Homepage();
+				
+				   // Obtener el contenedor principal (JFrame)
+		      
+		        // Crear una nueva instancia de Homepage
+		        Homepage home = new Homepage();
+               ShowPanel(home.getPanel());
+		        // Agregar el nuevo JPanel (Homepage) al JFrame
+		        
 			
 			}
 		});
 		btnCancel.setForeground(Color.BLACK);
 		btnCancel.setFont(new Font("Tahoma", Font.BOLD, 32));
 		btnCancel.setBackground(new Color(102, 102, 204));
+		
+		JLabel lblNewLabel_1_2_4_2 = new JLabel("Place of Birthday");
+		lblNewLabel_1_2_4_2.setFont(new Font("Times New Roman", Font.BOLD, 32));
+		
+		place = new JTextField();
+		place.setFont(new Font("Times New Roman", Font.ITALIC, 32));
+		place.setColumns(10);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.TRAILING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(separator, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(30)
-							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)))
+							.addGap(10)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE)
+								.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 279, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addComponent(lblNewLabel_1_2_4_2, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+									.addGap(27))
+								.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+									.addComponent(place, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(13)))))
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(18)
@@ -245,36 +271,35 @@ public class ModifyPage {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(lblNewLabel)
 							.addGap(18)))
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-							.addGroup(gl_panel.createSequentialGroup()
-								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-									.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
-									.addGroup(gl_panel.createSequentialGroup()
-										.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
-											.addComponent(passportNoLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-											.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-												.addComponent(lblNewLabel_1_1, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-												.addComponent(sexLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-												.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)))
-										.addGap(260)))
-								.addGap(55))
-							.addGroup(gl_panel.createSequentialGroup()
-								.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-								.addContainerGap()))
-						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(separator_1, GroupLayout.PREFERRED_SIZE, 362, GroupLayout.PREFERRED_SIZE)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+										.addComponent(passportNoLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+										.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(lblNewLabel_1_1, GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+											.addComponent(sexLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+											.addComponent(lblNewLabel_1_2_1, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE)))
+									.addGap(260)))
+							.addGap(55))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(gl_panel.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 								.addComponent(nationalityLabel, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2_4_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblNewLabel_1_2_4_1, GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
 								.addComponent(lblNewLabel_1_2_3, GroupLayout.PREFERRED_SIZE, 154, GroupLayout.PREFERRED_SIZE))
 							.addContainerGap())))
-				.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(103)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
 					.addGap(231)
 					.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 286, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(386, Short.MAX_VALUE))
+					.addContainerGap(396, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -289,9 +314,6 @@ public class ModifyPage {
 							.addGap(36)
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)))
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGap(83)
-							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
@@ -323,11 +345,18 @@ public class ModifyPage {
 									.addPreferredGap(ComponentPlacement.UNRELATED)))
 							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblNewLabel_1_2_4, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblNewLabel_1_2_4_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE))
-							.addGap(24)
-							.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-								.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(lblNewLabel_1_2_4_1, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(83)
+							.addComponent(imgJpane, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)
+							.addGap(21)
+							.addComponent(lblNewLabel_1_2_4_2, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)))
+					.addGap(17)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(dateIssueLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(dateofExpirationLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(place, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addPreferredGap(ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
@@ -376,6 +405,7 @@ public class ModifyPage {
 		        sexLabel.setText(list.getSex() != null ? list.getSex() : "N/A");
 		        nationalityLabel.setText(list.getNationality() != null ? list.getNationality() : "N/A");
 		        dateofExpirationLabel.setText(list.getDateOfExpiration() != null ? list.getDateOfExpiration() : "N/A");
+		        place.setText(list.getPlaceOfBirth());
 		        if (list.getSex().equals("M")) {  // Usa .equals() para comparar Strings
 		            ImageIcon img = new ImageIcon("C:\\Users\\vipap\\git\\Transportation-Security-Administration\\img\\men.jpg");
 		            
